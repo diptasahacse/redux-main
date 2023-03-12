@@ -6,7 +6,7 @@ const Products = () => {
   // console.log(products)
 
   const state = useSelector(state => state)
-  console.log(state)
+  // console.log(state)
 
   const [products, setProducts] = useState([]);
   useEffect(() => {

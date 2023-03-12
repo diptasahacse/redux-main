@@ -1,20 +1,22 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
 import { ADD_TO_CART } from "../redux/actionTypes/actionTypes";
 import ProductRatingStar from "./ProductRatingStar";
-
 const ProductCard = ({ item }) => {
-
-  const {title,price,image,description,rating:{rate,count}
-
+  const {
+    title,
+    price,
+    image,
+    description,
+    rating: { rate, count },
   } = item;
 
-  const dispatch = useDispatch()
- 
+  const dispatch = useDispatch();
 
+  const {pathname} = useLocation();
+  console.log(pathname.includes("products"))
 
-
-  
   return (
     <div className="col-12 col-md-4, col-lg-3">
       <div className="card product-card p-3">
@@ -29,7 +31,20 @@ const ProductCard = ({ item }) => {
         </p>
         <h5>Price : ${price}</h5>
 
-        <button className="btn btn-primary mt-3" onClick={()=> dispatch({type: ADD_TO_CART, payload: item})}>Add to Cart</button>
+        <div className="d-flex justify-content-between">
+          {!pathname.includes('cart') && <button
+            className="btn btn-primary mt-3"
+            onClick={() => dispatch({ type: ADD_TO_CART, payload: item })}
+          >
+            Add to Cart
+          </button>}
+          {pathname.includes('cart') && <button
+            className="bg-danger border-0 rounded text-white d-flex align-items-center"
+            
+          >
+            <i class="ri-close-circle-fill"></i>
+          </button>}
+        </div>
       </div>
     </div>
   );
