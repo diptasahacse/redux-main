@@ -6,10 +6,13 @@ import About from "./pages/About";
 import Cart from "./pages/Cart";
 import Layouts from "./Layouts/Layouts";
 import TopRated from "./pages/TopRated";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 function App() {
   return (
-   <BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
         <main>
           <Layouts>
             <Routes>
@@ -22,6 +25,7 @@ function App() {
           </Layouts>
         </main>
       </BrowserRouter>
+    </Provider>
   );
 }
 
