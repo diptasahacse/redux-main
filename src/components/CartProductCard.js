@@ -17,7 +17,7 @@ const CartProductCard = ({ product, index }) => {
       </td>
       <td>${price}</td>
       <td>{quantity}</td>
-      <td>${quantity * price}</td>
+      <td>${(quantity * price)}</td>
       <td>
         <button
           onClick={() => dispatch(removeFromCart(product))}
