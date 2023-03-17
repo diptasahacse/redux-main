@@ -1,17 +1,23 @@
-import { ADD_TO_CART, REMOVE_FROM_CART } from "../actionTypes/actionTypes";
+import {
+  ADD_TO_CART,
+  QUANTITY_DECREMENT,
+  QUANTITY_INCREMENT,
+  REMOVE_FROM_CART,
+} from "../actionTypes/actionTypes";
 
 const initialState = {
   cart: [],
 };
 
 const productReducer = (state = initialState, action) => {
-  
   switch (action.type) {
     case ADD_TO_CART:
-      const productIsThere = state.cart.find((element) => element.id === action.payload.id);
+      const productIsThere = state.cart.find(
+        (element) => element.id === action.payload.id
+      );
       // console.log(typeof action.payload.id);
       if (productIsThere) {
-        console.log("Product is there")
+        console.log("Product is there");
         productIsThere.quantity = productIsThere.quantity + 1;
         const newCart = state.cart.filter(
           (product) => product.id != action.payload.id
@@ -22,7 +28,7 @@ const productReducer = (state = initialState, action) => {
           cart: [...newCart, productIsThere],
         };
       } else {
-        console.log("Product is not there")
+        console.log("Product is not there");
         // console.log("not there")
         return {
           ...state,
@@ -35,6 +41,10 @@ const productReducer = (state = initialState, action) => {
         ...state,
         cart: state.cart.filter((item) => item.id !== action.payload.id),
       };
+    case QUANTITY_INCREMENT:
+      return state;
+    case QUANTITY_DECREMENT:
+      return state;
     default:
       return state;
   }

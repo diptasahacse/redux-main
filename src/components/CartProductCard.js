@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { quantityDecrement, quantityIncrement } from "../redux/actionCreators/cartAction";
 import { removeFromCart } from "../redux/actionCreators/productsActions";
 
 const CartProductCard = ({ product, index }) => {
@@ -16,8 +17,14 @@ const CartProductCard = ({ product, index }) => {
         </div>
       </td>
       <td>${price}</td>
-      <td>{quantity}</td>
-      <td>${(quantity * price)}</td>
+      <td>
+        <div className="d-flex justify-content-between align-items-center">
+          <button className="cart-quantity-btn"  onClick={()=> dispatch(quantityDecrement(product))}>-</button>
+          <p className="m-0">{quantity}</p>
+          <button className="cart-quantity-btn"  onClick={()=> dispatch(quantityIncrement(product))}>+</button>
+        </div>
+      </td>
+      <td>${quantity * price}</td>
       <td>
         <button
           onClick={() => dispatch(removeFromCart(product))}
