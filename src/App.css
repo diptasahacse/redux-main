@@ -24,3 +24,11 @@
   
   
 }
+
+
+
+/* Cart product card */
+.product-cart-image{
+  height: 60px;
+  width: 60px;
+}
