@@ -35,10 +35,11 @@
 
 
 /* card details */
-/* .cart-details{
-  border: 1px solid red;
-  border-radius: 10px;
-} */
+.cart-details{
+  background-color: #e2e2e2;
+  border-radius: 15px;
+  padding: 20px;
+}
 .cart-details hr{
   margin: 10px 0;
 }
@@ -52,4 +53,11 @@
   font-weight: bold;
   display: flex;
   justify-content: center;
+}
+
+
+.empty-cart{
+  background-color: #cbcbcb;
+  padding: 60px 0;
+  border-radius: 15px;
 }
