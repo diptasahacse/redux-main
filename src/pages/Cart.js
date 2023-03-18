@@ -27,13 +27,15 @@ const Cart = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {cart.map((product, index) => (
-                      <CartProductCard
-                        key={index}
-                        index={index}
-                        product={product}
-                      />
-                    ))}
+                    {cart
+                      .sort((a, b) => a.id - b.id)
+                      .map((product, index) => (
+                        <CartProductCard
+                          key={index}
+                          index={index}
+                          product={product}
+                        />
+                      ))}
                   </tbody>
                 </table>
               </div>
