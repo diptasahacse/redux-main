@@ -42,9 +42,29 @@ const productReducer = (state = initialState, action) => {
         cart: state.cart.filter((item) => item.id !== action.payload.id),
       };
     case QUANTITY_INCREMENT:
-      return state;
+      const proId = action.payload.id;
+      const targetedCartProduct = state.cart.find(
+        (product) => product.id === proId
+      );
+      targetedCartProduct.quantity = targetedCartProduct.quantity + 1;
+
+      const newCart = state.cart.filter((product) => product.id !== proId);
+
+      return { ...state, cart: [...newCart, targetedCartProduct] };
     case QUANTITY_DECREMENT:
-      return state;
+  
+      const pId = action.payload.id;
+      const targetCartProduct = state.cart.find(
+        (product) => product.id === pId
+      );
+      const currentQuantity = targetCartProduct.quantity;
+      const newCartArray = state.cart.filter((proId) => proId.id !== pId);
+      if (currentQuantity === 1) {
+        return { ...state, cart: [...newCartArray] };
+      }
+      targetCartProduct.quantity = targetCartProduct.quantity - 1;
+      return { ...state, cart: [...newCartArray, targetCartProduct] };
+
     default:
       return state;
   }
