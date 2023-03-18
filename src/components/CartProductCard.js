@@ -16,7 +16,7 @@ const CartProductCard = ({ product, index }) => {
         <div>{index + 1}</div>
       </th>
       <td className="align-middle text-center">
-        <div className="d-flex align-items-center gap-3">
+        <div className="d-flex align-items-center justify-content-center gap-3">
           <img className="product-cart-image" src={image} alt="" />
           <h6>{title.slice(0, 20)}...</h6>
         </div>
